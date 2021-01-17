@@ -26,3 +26,7 @@ hs_err_pid*
 
 # Backup files
 *~
+
+# Project files
+*.iml
+.idea
