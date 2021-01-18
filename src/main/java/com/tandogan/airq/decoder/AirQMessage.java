@@ -22,6 +22,12 @@ public class AirQMessage
     @JsonProperty("pressure")
     private List<Double> pressure = null;
 
+    @JsonProperty("co2")
+    private List<Double> co2 = null;
+
+    @JsonProperty("oxygen")
+    private List<Double> oxygen = null;
+
 /*
 
     @JsonProperty("window_open")
@@ -59,9 +65,6 @@ public class AirQMessage
 
     @JsonProperty("humidity_abs")
     private List<Double> humidityAbs = null;
-
-    @JsonProperty("co2")
-    private List<Double> co2 = null;
 
     @JsonProperty("health")
     private Double health;
@@ -110,9 +113,6 @@ public class AirQMessage
 
     @JsonProperty("cnt1")
     private List<Double> cnt1 = null;
-
-    @JsonProperty("oxygen")
-    private List<Double> oxygen = null;
 
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();

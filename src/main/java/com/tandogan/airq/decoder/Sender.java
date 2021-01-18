@@ -54,6 +54,9 @@ public class Sender
                     internalSend(publisher, topicPrefix, sensor, "humidity", airQMessage.getHumidity());
                     internalSend(publisher, topicPrefix, sensor, "pressure", airQMessage.getPressure());
 
+                    internalSend(publisher, topicPrefix, sensor, "co2", airQMessage.getCo2());
+                    internalSend(publisher, topicPrefix, sensor, "oxygen", airQMessage.getOxygen());
+
                     publisher.disconnect();
                     publisher.close();
                 }
