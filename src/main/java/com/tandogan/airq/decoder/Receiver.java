@@ -56,6 +56,7 @@ public class Receiver implements CommandLineRunner, MqttCallback
             client = new MqttClient(serverUri, clientId, new MemoryPersistence());
 
             MqttConnectOptions options = new MqttConnectOptions();
+            options.setAutomaticReconnect(true);
             options.setCleanSession(true);
             options.setUserName(username);
             options.setPassword(password.toCharArray());
