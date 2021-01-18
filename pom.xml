@@ -84,6 +84,18 @@
 						</execution>
 					</executions>
 				</plugin>
+
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<configuration>
+						<mainClass>com.tandogan.airq.decoder.Application</mainClass>
+						<layers>
+							<enabled>true</enabled>
+							<configuration>${project.basedir}/src/layers.xml</configuration>
+						</layers>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 
@@ -96,11 +108,30 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<mainClass>com.tandogan.airq.decoder.Application</mainClass>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 
+	<profiles>
+		<profile>
+			<id>with-docker</id>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>build-image</id>
+								<goals>
+									<goal>build-image</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
