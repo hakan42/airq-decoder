@@ -1,2 +1,9 @@
 server:
     port: 23482
+
+management:
+    endpoints:
+        enabled-by-default: true
+        web:
+            exposure:
+                include: "*"
