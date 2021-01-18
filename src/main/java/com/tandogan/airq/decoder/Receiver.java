@@ -9,6 +9,7 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -31,8 +32,8 @@ public class Receiver implements CommandLineRunner, MqttCallback
     @Value("${mqtt.source.topic_filter}")
     String topicFilter;
 
-    @Value("${mqtt.source.publish_decoded}")
-    boolean publishDecoded = false;
+    @Autowired
+    Sender sender;
 
     private MqttClient client;
 
@@ -86,6 +87,17 @@ public class Receiver implements CommandLineRunner, MqttCallback
         {
             AirQMessage airQMessage = objectMapper.readValue(new String(mqttMessage.getPayload()), AirQMessage.class);
             log.info("    decoded:    '{}'", airQMessage);
+
+            if (sender != null)
+            {
+                int i = s.lastIndexOf("/");
+                if (i > -1)
+                {
+                    s = s.substring(i + 1);
+                }
+
+                sender.publish(s, airQMessage);
+            }
         }
         catch (Exception e)
         {
