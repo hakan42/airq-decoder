@@ -30,3 +30,6 @@ hs_err_pid*
 # Project files
 *.iml
 .idea
+
+# Local config files
+src/main/resources/application-*.yml
