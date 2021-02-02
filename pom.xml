@@ -65,6 +65,35 @@
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-help-plugin</artifactId>
+                    <version>${maven-help-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>effective-pom</id>
+                            <phase>initialize</phase>
+                            <goals>
+                                <goal>effective-pom</goal>
+                            </goals>
+                            <configuration>
+                                <output>${project.build.directory}/effective-pom.xml</output>
+                                <verbose>true</verbose>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>effective-settings</id>
+                            <phase>initialize</phase>
+                            <goals>
+                                <goal>effective-settings</goal>
+                            </goals>
+                            <configuration>
+                                <output>${project.build.directory}/effective-settings.xml</output>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
                     <executions>
                         <execution>
@@ -106,6 +135,11 @@
         </pluginManagement>
 
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-help-plugin</artifactId>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
