@@ -12,7 +12,7 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <!-- Properties in parent versions are prohibited... -->
         <version>2.4.2</version>
-		<relativePath/> <!-- Lookup parent from repository -->
+        <relativePath/> <!-- Lookup parent from repository -->
     </parent>
 
     <properties>
@@ -22,122 +22,122 @@
         <maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
 
         <spring-boot.version>2.4.2</spring-boot.version>
-		<spring-integration-mqtt.version>5.4.3</spring-integration-mqtt.version>
+        <spring-integration-mqtt.version>5.4.3</spring-integration-mqtt.version>
 
         <lombok.version>1.18.16</lombok.version>
     </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-			<version>${spring-boot.version}</version>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-			<version>${spring-boot.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework.integration</groupId>
-			<artifactId>spring-integration-mqtt</artifactId>
-			<version>${spring-integration-mqtt.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-mqtt</artifactId>
+            <version>${spring-integration-mqtt.version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>${lombok.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<version>${spring-boot.version}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-dependency-plugin</artifactId>
-					<executions>
-						<execution>
-							<id>dependency-list</id>
-							<phase>initialize</phase>
-							<goals>
-								<goal>list</goal>
-							</goals>
-							<configuration>
-								<sort>true</sort>
-								<outputFile>${project.build.directory}/dependencies-list.txt</outputFile>
-							</configuration>
-						</execution>
-						<execution>
-							<id>dependency-tree</id>
-							<phase>initialize</phase>
-							<goals>
-								<goal>tree</goal>
-							</goals>
-							<configuration>
-								<outputFile>${project.build.directory}/dependencies-tree.txt</outputFile>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>dependency-list</id>
+                            <phase>initialize</phase>
+                            <goals>
+                                <goal>list</goal>
+                            </goals>
+                            <configuration>
+                                <sort>true</sort>
+                                <outputFile>${project.build.directory}/dependencies-list.txt</outputFile>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>dependency-tree</id>
+                            <phase>initialize</phase>
+                            <goals>
+                                <goal>tree</goal>
+                            </goals>
+                            <configuration>
+                                <outputFile>${project.build.directory}/dependencies-tree.txt</outputFile>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
 
-				<plugin>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-maven-plugin</artifactId>
-					<configuration>
-						<mainClass>com.tandogan.airq.decoder.Application</mainClass>
-						<layers>
-							<enabled>true</enabled>
-							<configuration>${project.basedir}/src/layers.xml</configuration>
-						</layers>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <mainClass>com.tandogan.airq.decoder.Application</mainClass>
+                        <layers>
+                            <enabled>true</enabled>
+                            <configuration>${project.basedir}/src/layers.xml</configuration>
+                        </layers>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
 
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-			</plugin>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
 
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
-	<profiles>
-		<profile>
-			<id>with-docker</id>
+    <profiles>
+        <profile>
+            <id>with-docker</id>
 
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.springframework.boot</groupId>
-						<artifactId>spring-boot-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>build-image</id>
-								<goals>
-									<goal>build-image</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>build-image</id>
+                                <goals>
+                                    <goal>build-image</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
